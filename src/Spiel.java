@@ -28,7 +28,6 @@ public class Spiel {
             }
         }
 
-        System.out.println("Richtige ZUSATZ: "+richtige_zusatzzahl);
 
         if (richtige_zahlen < 3){
             return "Sie haben " + richtige_zahlen + " richtige Zahlen.";

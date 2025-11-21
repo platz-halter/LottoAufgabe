@@ -22,9 +22,7 @@ public class Ziehung {
             this.dieLottozahlen[i] = this.die_urne.ziehen().gibZahl();
 
         }
-        System.out.println(Arrays.toString(this.dieLottozahlen));
         sortieren();
-        System.out.println(Arrays.toString(this.dieLottozahlen));
     }
     public int gib_Lottozahl(int Nr){
         return this.dieLottozahlen[Nr];
