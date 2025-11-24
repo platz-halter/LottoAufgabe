@@ -28,9 +28,12 @@ public class Spiel {
             }
         }
 
+        if (richtige_zahlen <= 1){
+            return "Sie haben "+ richtige_zahlen + " richtige Zahl";
+        }
 
         if (richtige_zahlen < 3){
-            return "Sie haben " + richtige_zahlen + " richtige Zahlen.";
+            return "Sie haben " + richtige_zahlen + " richtige Zahlen";
         }
         if (richtige_zahlen >= 3 && richtige_zahlen <= 5){
             if (richtige_zusatzzahl){

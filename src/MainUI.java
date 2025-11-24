@@ -40,13 +40,11 @@ public class MainUI extends JFrame{
         ziehung5.setFocusable(false);
         ziehung6.setFocusable(false);
 
-
         ziehenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JTextField[] user_input_tips = {tipp1, tipp2, tipp3, tipp4, tipp5, tipp6};
                 JTextField[] result_output   = {ziehung1, ziehung2, ziehung3, ziehung4, ziehung5, ziehung6};
-
 
                 int[] tipp_zahlen = new int[6];
 
@@ -54,20 +52,29 @@ public class MainUI extends JFrame{
                     int tip = 0;
 
                     try {
+                        if (user_input_tips[i].getText().equals("")){
+                            throw new Exception("Eine ihrer Eingaben ist leer");
+                        }
+
+
                         tip = Integer.parseInt(user_input_tips[i].getText());
 
                         if (tip <= 0) {
-                            ergebnis_text.setText("Eine Eingabe ist kleiner als der erlaubte Bereich!");
-                            return;
+                            throw new Exception("Eine Eingabe ist kleiner als der erlaubte Bereich!");
                         }
                         if (tip > 49) {
-                            ergebnis_text.setText("Eine Ihrer Eingaben ist größer als 49");
-                            return;
+                            throw new Exception("Eine Ihrer Eingaben ist größer als 49");
+                        }
+
+                        for (int j=0; j<i; j++){
+                            if (user_input_tips[i].getText().equals(user_input_tips[j].getText())){
+                                throw  new Exception("Eine ihrer getippten Zahlen ist doppelt");
+                            }
                         }
                     }
                     catch (Exception ex){
-                        ergebnis_text.setText("Überprüfen sie Ihre Eingabe");
-                        tip = 0;
+                        user_input_tips[i].setText("");
+                        ergebnis_text.setText(ex.getMessage());
                         return;
                     }
                     finally {
